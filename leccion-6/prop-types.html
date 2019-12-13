@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <title>Prop types</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.10.2/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.10.2/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+    <style>
+      .Lunes {
+        color: salmon;
+      }
+      .OtroColor {
+        color: green;
+      }
+    </style>
+    <div id="root"></div>
+
+    <script type="text/babel">
+    
+      const rootElement = document.getElementById('root');
+
+      const colorDia = (dia) => {
+        switch (dia) {
+          case 'Lunes':
+            return { color: 'salmon'}
+            break;
+          case 'Viernes':
+            return { color: 'tomato'}
+            break
+          default:
+            return { color: 'blue'}
+            break;
+        }
+      };
+      
+      const MeGusta = ({ elemento, dia, className }) => (
+        <div style={{ paddingLeft: 10 }}>
+          <h1>Me gusta {elemento}</h1>
+          <span 
+            className={className}
+            className={dia === "Lunes" ? "Lunes" : ""}
+          >
+            * menos los {dia}
+          </span>
+        </div>
+      );
+
+      // string, numner, func, element, bool
+      MeGusta.propTypes = {
+        elemento: PropTypes.string.isRequired,
+        dia: PropTypes.oneOf(['Lunes', 'Martes', 'Viernes', 'Domingos']),
+        className: PropTypes.string,
+      }
+
+      MeGusta.defaultProps = {
+        elemento: 'Coloca algo',
+      }
+
+      const element = ( 
+        <div>
+          <MeGusta dia="Domingos" />
+          <MeGusta elemento="Javascript" dia="Viernes" />
+          <MeGusta
+            className="OtroColor" 
+            elemento="la fiesta" 
+            dia="Lunes"
+          />
+        </div>       
+      );
+
+      ReactDOM.render(element, rootElement);
+    </script>
+  </body>
+</html>

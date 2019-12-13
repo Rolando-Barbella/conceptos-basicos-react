@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <title>Hola Mundo</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.10.2/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.10.2/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+      .Lunes {
+        color: salmon;
+      }
+      .OtroColor {
+        color: green;
+      }
+    </style>
+    <div id="root"></div>
+
+    <script type="text/babel">
+    
+      const rootElement = document.getElementById('root');
+
+      const colorDia = (dia) => {
+        switch (dia) {
+          case 'Lunes':
+            return { color: 'salmon'}
+            break;
+          case 'Viernes':
+            return { color: 'tomato'}
+            break
+          default:
+            return { color: 'blue'}
+            break;
+        }
+      }
+      
+      const MeGusta = ({ elemento, dia, className }) => (
+        <div style={{ paddingLeft: 10 }}>
+          <h1>Me gusta {elemento}</h1>
+          <span 
+            className={className}
+            className={dia === "Lunes" ? "Lunes" : ""}
+          >
+            * menos los {dia}
+          </span>
+        </div>
+      );
+
+      const element = ( 
+        <div>
+          {/* Puedo reusar la instancia anterior? No */}
+          <MeGusta key="2" elemento="React" dia="Domingos"/>
+          {/* Puedo reusar la instancia anterior? Si */}
+          <MeGusta
+            key="1" 
+            className="OtroColor" 
+            elemento="la fiesta" 
+            dia="Lunes"
+          />
+          {/* Puedo reusar la instancia anterior? Si */}
+          <MeGusta key="3" elemento="Javascript" dia="Viernes"/>
+        </div>       
+      );
+
+      console.log(element)
+      
+      ReactDOM.render(element, rootElement);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Hola Mundo</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.10.2/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.10.2/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const rootElement = document.getElementById('root');
+
+      const MeGusta = ({elemento, dia}) => (
+        <div style={{ paddingLeft: 10 }}>
+          <h1>Me gusta {elemento}</h1>
+          <span>* menos los {dia}</span>
+        </div>
+      );
+
+      const element = ( 
+        <div>
+          <MeGusta elemento="React" dia="Domingos"/>
+          <MeGusta elemento="Javascript" dia="Viernes"/>
+          <MeGusta elemento="la fiesta" dia="Lunes"/>
+        </div>       
+      );
+
+      ReactDOM.render(element, rootElement);
+    </script>
+  </body>
+</html>
