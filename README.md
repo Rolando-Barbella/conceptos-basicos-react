@@ -1,6 +1,6 @@
 # Conceptos bàsicos de React Js
 
-Pequeńas lecciones hacerca de conceptos fundamentales de [React](https://es.reactjs.org/)
+Pequeńas lecciones acerca de conceptos fundamentales de [React](https://es.reactjs.org/)
 
 - [Hola mundo](https://es.reactjs.org/docs/hello-world.html#gatsby-focus-wrapper)
 
